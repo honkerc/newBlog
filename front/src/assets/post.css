@@ -1,0 +1,349 @@
+/* ===== Markdown 内容样式 ===== */
+.markdown-body {
+    color: #EFF3F8;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.markdown-body h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 40px 0 20px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #FFFFFF, #A6FFE0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(0, 242, 192, 0.3);
+}
+
+.markdown-body h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 36px 0 16px;
+    color: #00F2C0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-body h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    color: #C8FCEB;
+}
+
+.markdown-body h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: #DAE2FD;
+}
+
+.markdown-body p {
+    margin: 12px 0;
+    color: #E2E9FF;
+}
+
+.markdown-body a {
+    color: #00F2C0;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0, 242, 192, 0.3);
+    transition: 0.2s;
+}
+
+.markdown-body a:hover {
+    border-bottom-color: #00F2C0;
+}
+
+.markdown-body strong {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.markdown-body em {
+    color: #A6FFE0;
+    font-style: italic;
+}
+
+.markdown-body del {
+    color: #6A829C;
+}
+
+.markdown-body hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 242, 192, 0.4), transparent);
+    margin: 32px 0;
+}
+
+/* 代码块 */
+.markdown-body pre {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    /* padding: 14px 18px; */
+    overflow-x: auto;
+    margin: 16px 0;
+    position: relative;
+}
+
+.markdown-body pre code {
+    font-family: 'JetBrains Mono', 'Noto Serif SC', 'Noto Sans Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #E2E9FF;
+    background: none;
+    padding: 0;
+}
+
+.markdown-body code {
+    font-family: 'JetBrains Mono', 'Noto Serif SC', 'Noto Sans Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 13px;
+    background: rgba(0, 242, 192, 0.1);
+    color: #00F2C0;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* 行内代码 */
+.markdown-body p code,
+.markdown-body li code {
+    font-size: 13px;
+    background: rgba(0, 242, 192, 0.1);
+    color: #00F2C0;
+    padding: 2px 8px;
+    border-radius: 6px;
+}
+
+/* 引用 */
+.markdown-body blockquote {
+    border-left: 4px solid #00F2C0;
+    background: rgba(0, 242, 192, 0.06);
+    padding: 16px 24px;
+    margin: 16px 0;
+    border-radius: 0 12px 12px 0;
+    color: #CBD5F0;
+}
+
+.markdown-body blockquote p {
+    margin: 4px 0;
+    color: #CBD5F0;
+}
+
+/* 列表 */
+.markdown-body ul,
+.markdown-body ol {
+    padding-left: 24px;
+    margin: 12px 0;
+}
+
+.markdown-body li {
+    margin: 6px 0;
+    color: #E2E9FF;
+}
+
+.markdown-body ul li::marker {
+    color: #00F2C0;
+}
+
+.markdown-body ol li::marker {
+    color: #00F2C0;
+    font-weight: 600;
+}
+
+/* 任务列表 - 使用主题色对号 */
+.markdown-body ul li.task-list-item,
+.markdown-body ol li.task-list-item {
+    list-style: none;
+    position: relative;
+    padding-left: 28px;
+}
+
+.markdown-body .task-list-item input[type="checkbox"] {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background: transparent;
+    cursor: default;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.markdown-body .task-list-item input[type="checkbox"]:checked {
+    border-color: #00F2C0;
+    background: rgba(0, 242, 192, 0.1);
+}
+
+.markdown-body .task-list-item input[type="checkbox"]:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00F2C0;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.markdown-body .task-list-item input[type="checkbox"]:checked+strong,
+.markdown-body .task-list-item input[type="checkbox"]:checked+span {
+    color: rgba(255, 255, 255, 0.3);
+    text-decoration: line-through;
+}
+
+/* 表格 */
+.markdown-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.markdown-body th {
+    background: rgba(0, 242, 192, 0.15);
+    color: #00F2C0;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-body td {
+    padding: 10px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #E2E9FF;
+}
+
+.markdown-body tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.markdown-body tr:hover {
+    background: rgba(0, 242, 192, 0.05);
+}
+
+/* 图片 */
+.markdown-body img {
+    max-width: 100%;
+    border-radius: 16px;
+    margin: 16px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* 视频 - 限制最大尺寸，竖屏视频不会太大 */
+.markdown-body video {
+    max-width: 100%;
+    max-height: 480px;
+    border-radius: 12px;
+    margin: 12px 0;
+    display: block;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 内联 SVG / 图标 */
+.markdown-body .emoji {
+    font-style: normal;
+}
+
+/* 代码块语言标签 */
+.markdown-body pre::before {
+    content: attr(data-lang);
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 高亮行 */
+.markdown-body .highlight {
+    background: rgba(0, 242, 192, 0.08);
+    padding: 0 4px;
+    border-radius: 4px;
+}
+
+/* 键盘标签 */
+.markdown-body kbd {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 12px;
+    color: #E2E9FF;
+    font-family: inherit;
+}
+
+/* 定义列表 */
+.markdown-body dl {
+    margin: 12px 0;
+}
+
+.markdown-body dt {
+    font-weight: 600;
+    color: #00F2C0;
+    margin-top: 12px;
+}
+
+.markdown-body dd {
+    padding-left: 20px;
+    color: #E2E9FF;
+    margin: 4px 0;
+}
+
+/* 详情/折叠 */
+.markdown-body details {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 12px 0;
+}
+
+.markdown-body summary {
+    font-weight: 600;
+    color: #00F2C0;
+    cursor: default;
+}
+
+.markdown-body details p {
+    margin: 8px 0 0;
+    padding-left: 8px;
+}
+
+/* 脚注 */
+.markdown-body .footnote {
+    color: #6A829C;
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+    padding-top: 16px;
+}
+
+/* 数学公式（模拟） */
+.markdown-body .math {
+    background: rgba(11, 14, 20, 0.6);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    color: #A6FFE0;
+    margin: 16px 0;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}

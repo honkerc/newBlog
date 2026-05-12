@@ -1,0 +1,148 @@
+/* ===== 字体导入 ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ===== CSS 变量 ===== */
+:root {
+    /* 主题色 */
+    --theme: #00F2C0;
+    --theme-rgb: 0, 242, 192;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    /* 背景 */
+    --bg-gradient-start: rgb(80, 106, 121);
+    --bg-gradient-end: #354752;
+    --bg-card: rgba(11, 14, 20, 0.3);
+    --bg-card-hover: rgba(11, 14, 20, 0.5);
+    --bg-surface: rgba(255, 255, 255, 0.03);
+    --bg-surface-hover: rgba(255, 255, 255, 0.05);
+
+    /* 文字 */
+    --text-primary: #FFFFFF;
+    --text-secondary: #EFF3F8;
+    --text-tertiary: #CBD5F0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    /* 边框 */
+    --border-color: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+
+    /* 圆角 */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 50%;
+
+    /* 间距 */
+    --gap-xs: 4px;
+    --gap-sm: 8px;
+    --gap-md: 12px;
+    --gap-lg: 16px;
+    --gap-xl: 24px;
+
+    /* 阴影 */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    /* 过渡 */
+    --transition: 0.2s ease;
+}
+
+/* ===== 全局公共样式 ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 非内容区域禁止选择 */
+.sidebar,
+.admin-sidebar,
+.top-menu,
+.nav-item,
+button,
+.btn,
+.action-btn,
+.nav-btn,
+.tab-btn,
+.focus-btn,
+.slash-menu,
+.step-indicator,
+.bottom-bar,
+.editor-topbar,
+.topbar-tabs,
+.topbar-right,
+.post-meta,
+.meta-category,
+.music-card,
+.song-item,
+.playlist-item,
+[role="button"],
+i.fas,
+i.far,
+i.fab {
+    user-select: none;
+    cursor: default;
+}
+
+body {
+    font-family: 'Inter', 'Noto Serif SC', 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    height: 100vh;
+    overflow: hidden;
+    color: var(--text-secondary);
+}
+
+#app {
+    height: 100vh;
+    background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+/* 可点击元素使用 pointer 光标 */
+a,
+button,
+input,
+select,
+textarea,
+summary,
+.nav-item,
+.playlist-item,
+.music-card,
+.song-item,
+.section-title span,
+.song-play i,
+[role="button"],
+label,
+.toc-list a {
+    cursor: pointer;
+}
+
+/* 输入框使用 text 光标 */
+input[type="text"],
+input[type="search"],
+textarea {
+    cursor: text;
+}
+
+/* 全局代码字体：等宽 + 中文衬线，确保代码块中的中文也使用 Noto Serif SC */
+code,
+pre,
+kbd,
+samp {
+    font-family: 'JetBrains Mono', 'Noto Serif SC', 'Noto Sans Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* 隐藏所有滚动滑块 */
+::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important;
+}
+
+* {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}

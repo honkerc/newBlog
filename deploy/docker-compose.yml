@@ -1,0 +1,76 @@
+# ============================================
+# 博客系统 - Docker Compose 部署配置
+# ============================================
+# 使用方式:
+#   cd deploy
+#   docker-compose up -d
+#
+# 访问地址:
+#   - 前端 (front): http://localhost:8080
+#   - 前端 (mini):  http://localhost:3001
+#   - API 后端:     http://localhost:8000
+#   - API 文档:     http://localhost:8000/docs
+# ============================================
+
+version: "3.8"
+
+services:
+  # ===== 后端 API =====
+  backend:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.backend
+    container_name: blog-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      # 持久化数据
+      - blog-data:/app/data
+      # 上传文件
+      - blog-uploads:/app/uploads
+      # 日志
+      - blog-logs:/app/logs
+    environment:
+      - DATABASE_URL=sqlite:///data/blog.db
+      - SECRET_KEY=${SECRET_KEY:-change-me-in-production}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=1440
+      - ADMIN_USERNAME=${ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin123}
+      - BASE_URL=${BASE_URL:-http://localhost:8000}
+      - UPLOAD_DIR=./uploads
+      - MAX_UPLOAD_SIZE=10485760
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ===== 前端 (front) =====
+  front:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.front
+    container_name: blog-front
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+  # ===== 前端 (mini) =====
+  mini:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.mini
+    container_name: blog-mini
+    restart: unless-stopped
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+
+volumes:
+  blog-data:
+  blog-uploads:
+  blog-logs:

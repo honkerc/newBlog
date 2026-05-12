@@ -1,0 +1,20 @@
+# ============================================
+# 博客系统后端依赖
+# ============================================
+# 安装命令: pip install -r requirements.txt
+
+# ---- Web 框架 ----
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# ---- 数据库（Tortoise ORM） ----
+tortoise-orm==0.20.0     # 异步 ORM 框架
+aiosqlite      # SQLite 异步驱动（开发用）
+
+# ---- 认证 ----
+python-jose[cryptography]==3.3.0  # JWT 令牌
+passlib[bcrypt]==1.7.4            # 密码哈希
+python-multipart==0.0.6           # 表单上传
+
+# ---- 工具 ----
+python-dotenv==1.0.0      # 环境变量管理

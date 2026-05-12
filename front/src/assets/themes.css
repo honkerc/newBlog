@@ -1,0 +1,391 @@
+/* ============================================
+   主题配色方案
+   通过 data-theme 属性切换主题
+   使用方式: <html data-theme="aurora">
+   ============================================ */
+
+/* ===== 默认主题：翡翠绿 ===== */
+:root,
+[data-theme="jade"] {
+    --theme: #00F2C0;
+    --theme-rgb: 0, 242, 192;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: rgb(80, 106, 121);
+    --bg-gradient-end: #354752;
+    --bg-card: rgba(11, 14, 20, 0.3);
+    --bg-card-hover: rgba(11, 14, 20, 0.5);
+    --bg-surface: rgba(255, 255, 255, 0.03);
+    --bg-surface-hover: rgba(255, 255, 255, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #EFF3F8;
+    --text-tertiary: #CBD5F0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+
+    --sidebar-bg: rgba(10, 16, 26, 0.92);
+    --sidebar-border: rgba(255, 255, 255, 0.04);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.45);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.75);
+    --sidebar-nav-active-bg: rgba(0, 242, 192, 0.1);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #00F2C0;
+    --sidebar-nav-indicator: #00F2C0;
+    --sidebar-logo-text: linear-gradient(135deg, #f0f4fa 30%, #a6ffe0 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== 石板灰 ===== */
+[data-theme="slate"] {
+    --theme: #7a8a9a;
+    --theme-rgb: 122, 138, 154;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: rgb(54, 64, 74);
+    --bg-gradient-end: rgb(41, 49, 57);
+    --bg-card: rgba(0, 0, 0, 0.2);
+    --bg-card-hover: rgba(0, 0, 0, 0.35);
+    --bg-surface: rgba(255, 255, 255, 0.03);
+    --bg-surface-hover: rgba(255, 255, 255, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E6E8EA;
+    --text-tertiary: #C4C8CC;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-light: rgba(255, 255, 255, 0.08);
+
+    --sidebar-bg: rgb(39, 47, 54);
+    --sidebar-border: rgba(255, 255, 255, 0.04);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(122, 138, 154, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #7a8a9a;
+    --sidebar-nav-indicator: #7a8a9a;
+    --sidebar-logo-text: linear-gradient(135deg, #e6e8ea 30%, #c4c8cc 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 极光紫 ===== */
+[data-theme="aurora"] {
+    --theme: #a29bfe;
+    --theme-rgb: 162, 155, 254;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #2d1b4e;
+    --bg-gradient-end: #1a1035;
+    --bg-card: rgba(162, 155, 254, 0.04);
+    --bg-card-hover: rgba(162, 155, 254, 0.08);
+    --bg-surface: rgba(162, 155, 254, 0.03);
+    --bg-surface-hover: rgba(162, 155, 254, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E8E6F5;
+    --text-tertiary: #C8C4F0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(162, 155, 254, 0.08);
+    --border-light: rgba(162, 155, 254, 0.12);
+
+    --sidebar-bg: rgba(30, 24, 48, 0.85);
+    --sidebar-border: rgba(162, 155, 254, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(162, 155, 254, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #a29bfe;
+    --sidebar-nav-indicator: #a29bfe;
+    --sidebar-logo-text: linear-gradient(135deg, #e8e6f5 30%, #c8c4f0 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 暖阳橙 ===== */
+[data-theme="sunset"] {
+    --theme: #fdcb6e;
+    --theme-rgb: 253, 203, 110;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #5a4a2a;
+    --bg-gradient-end: #3d3020;
+    --bg-card: rgba(253, 203, 110, 0.04);
+    --bg-card-hover: rgba(253, 203, 110, 0.08);
+    --bg-surface: rgba(253, 203, 110, 0.03);
+    --bg-surface-hover: rgba(253, 203, 110, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5F0E6;
+    --text-tertiary: #F0E0C4;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(253, 203, 110, 0.08);
+    --border-light: rgba(253, 203, 110, 0.12);
+
+    --sidebar-bg: rgba(42, 32, 18, 0.85);
+    --sidebar-border: rgba(253, 203, 110, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(253, 203, 110, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #fdcb6e;
+    --sidebar-nav-indicator: #fdcb6e;
+    --sidebar-logo-text: linear-gradient(135deg, #f5f0e6 30%, #f0e0c4 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 深海蓝 ===== */
+[data-theme="ocean"] {
+    --theme: #74b9ff;
+    --theme-rgb: 116, 185, 255;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #1a3a5c;
+    --bg-gradient-end: #0f2440;
+    --bg-card: rgba(116, 185, 255, 0.04);
+    --bg-card-hover: rgba(116, 185, 255, 0.08);
+    --bg-surface: rgba(116, 185, 255, 0.03);
+    --bg-surface-hover: rgba(116, 185, 255, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E6EEF5;
+    --text-tertiary: #C4D8F0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(116, 185, 255, 0.08);
+    --border-light: rgba(116, 185, 255, 0.12);
+
+    --sidebar-bg: rgba(16, 28, 48, 0.85);
+    --sidebar-border: rgba(116, 185, 255, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(116, 185, 255, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #74b9ff;
+    --sidebar-nav-indicator: #74b9ff;
+    --sidebar-logo-text: linear-gradient(135deg, #e6eef5 30%, #c4d8f0 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 樱花粉 ===== */
+[data-theme="sakura"] {
+    --theme: #fd79a8;
+    --theme-rgb: 253, 121, 168;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #5a2a3a;
+    --bg-gradient-end: #3d1a28;
+    --bg-card: rgba(253, 121, 168, 0.04);
+    --bg-card-hover: rgba(253, 121, 168, 0.08);
+    --bg-surface: rgba(253, 121, 168, 0.03);
+    --bg-surface-hover: rgba(253, 121, 168, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5E6EC;
+    --text-tertiary: #F0C4D4;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(253, 121, 168, 0.08);
+    --border-light: rgba(253, 121, 168, 0.12);
+
+    --sidebar-bg: rgba(42, 22, 32, 0.85);
+    --sidebar-border: rgba(253, 121, 168, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(253, 121, 168, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #fd79a8;
+    --sidebar-nav-indicator: #fd79a8;
+    --sidebar-logo-text: linear-gradient(135deg, #f5e6ec 30%, #f0c4d4 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 石墨灰 ===== */
+[data-theme="graphite"] {
+    --theme: #b2bec3;
+    --theme-rgb: 178, 190, 195;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #2d3436;
+    --bg-gradient-end: #1e2224;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card-hover: rgba(255, 255, 255, 0.06);
+    --bg-surface: rgba(255, 255, 255, 0.02);
+    --bg-surface-hover: rgba(255, 255, 255, 0.04);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E6E8EA;
+    --text-tertiary: #C4C8CC;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(255, 255, 255, 0.05);
+    --border-light: rgba(255, 255, 255, 0.08);
+
+    --sidebar-bg: rgba(22, 26, 30, 0.88);
+    --sidebar-border: rgba(255, 255, 255, 0.04);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(178, 190, 195, 0.1);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #b2bec3;
+    --sidebar-nav-indicator: #b2bec3;
+    --sidebar-logo-text: linear-gradient(135deg, #e6e8ea 30%, #c4c8cc 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 烈焰红 ===== */
+[data-theme="flame"] {
+    --theme: #ff6b6b;
+    --theme-rgb: 255, 107, 107;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #5a2020;
+    --bg-gradient-end: #3d1414;
+    --bg-card: rgba(255, 107, 107, 0.04);
+    --bg-card-hover: rgba(255, 107, 107, 0.08);
+    --bg-surface: rgba(255, 107, 107, 0.03);
+    --bg-surface-hover: rgba(255, 107, 107, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5E6E6;
+    --text-tertiary: #F0C4C4;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(255, 107, 107, 0.08);
+    --border-light: rgba(255, 107, 107, 0.12);
+
+    --sidebar-bg: rgba(42, 18, 18, 0.85);
+    --sidebar-border: rgba(255, 107, 107, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(255, 107, 107, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #ff6b6b;
+    --sidebar-nav-indicator: #ff6b6b;
+    --sidebar-logo-text: linear-gradient(135deg, #f5e6e6 30%, #f0c4c4 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 森林绿 ===== */
+[data-theme="forest"] {
+    --theme: #55efc4;
+    --theme-rgb: 85, 239, 196;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #1a4a3a;
+    --bg-gradient-end: #0e3026;
+    --bg-card: rgba(85, 239, 196, 0.04);
+    --bg-card-hover: rgba(85, 239, 196, 0.08);
+    --bg-surface: rgba(85, 239, 196, 0.03);
+    --bg-surface-hover: rgba(85, 239, 196, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E6F5F0;
+    --text-tertiary: #C4F0E0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(85, 239, 196, 0.08);
+    --border-light: rgba(85, 239, 196, 0.12);
+
+    --sidebar-bg: rgba(14, 36, 28, 0.85);
+    --sidebar-border: rgba(85, 239, 196, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(85, 239, 196, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #55efc4;
+    --sidebar-nav-indicator: #55efc4;
+    --sidebar-logo-text: linear-gradient(135deg, #e6f5f0 30%, #c4f0e0 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 暗夜紫 ===== */
+[data-theme="midnight"] {
+    --theme: #6c5ce7;
+    --theme-rgb: 108, 92, 231;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #2a1a5a;
+    --bg-gradient-end: #1a0e3d;
+    --bg-card: rgba(108, 92, 231, 0.04);
+    --bg-card-hover: rgba(108, 92, 231, 0.08);
+    --bg-surface: rgba(108, 92, 231, 0.03);
+    --bg-surface-hover: rgba(108, 92, 231, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #E8E6F5;
+    --text-tertiary: #CCC4F0;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(108, 92, 231, 0.08);
+    --border-light: rgba(108, 92, 231, 0.12);
+
+    --sidebar-bg: rgba(22, 16, 42, 0.88);
+    --sidebar-border: rgba(108, 92, 231, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(108, 92, 231, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #6c5ce7;
+    --sidebar-nav-indicator: #6c5ce7;
+    --sidebar-logo-text: linear-gradient(135deg, #e8e6f5 30%, #ccc4f0 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== 琥珀金 ===== */
+[data-theme="amber"] {
+    --theme: #f9ca24;
+    --theme-rgb: 249, 202, 36;
+    --theme-light: rgba(var(--theme-rgb), 0.12);
+    --theme-border: rgba(var(--theme-rgb), 0.2);
+
+    --bg-gradient-start: #5a4a1a;
+    --bg-gradient-end: #3d3010;
+    --bg-card: rgba(249, 202, 36, 0.04);
+    --bg-card-hover: rgba(249, 202, 36, 0.08);
+    --bg-surface: rgba(249, 202, 36, 0.03);
+    --bg-surface-hover: rgba(249, 202, 36, 0.05);
+
+    --text-primary: #FFFFFF;
+    --text-secondary: #F5F0E0;
+    --text-tertiary: #F0E0B8;
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    --border-color: rgba(249, 202, 36, 0.08);
+    --border-light: rgba(249, 202, 36, 0.12);
+
+    --sidebar-bg: rgba(38, 32, 12, 0.85);
+    --sidebar-border: rgba(249, 202, 36, 0.06);
+    --sidebar-nav-default: rgba(255, 255, 255, 0.4);
+    --sidebar-nav-hover: rgba(255, 255, 255, 0.6);
+    --sidebar-nav-active-bg: rgba(249, 202, 36, 0.12);
+    --sidebar-nav-active-text: #FFFFFF;
+    --sidebar-nav-active-icon: #f9ca24;
+    --sidebar-nav-indicator: #f9ca24;
+    --sidebar-logo-text: linear-gradient(135deg, #f5f0e0 30%, #f0e0b8 100%);
+    --sidebar-footer-text: rgba(255, 255, 255, 0.25);
+}
