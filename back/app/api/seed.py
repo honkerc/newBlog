@@ -3,8 +3,12 @@
 测试数据种子 - 生成初始文章和动态数据
 ============================================
 首次启动时调用，如果数据库为空则填充测试数据。
+
+生产环境（ENV=production）只创建一篇 Markdown 语法教程文章。
+开发环境填充完整的测试数据。
 """
 
+import os
 from app.models.post import Post
 from app.models.moment import Moment
 from app.models.book import Book
@@ -13,10 +17,329 @@ from app.core.logger import logger
 from datetime import datetime, timedelta
 
 
+# ============================================
+# 环境判断
+# ============================================
+IS_PRODUCTION = os.getenv("ENV", "development") == "production"
+
+
 async def seed_data():
     """填充测试数据（仅当数据库为空时）"""
 
     post_count = await Post.all().count()
+
+    if IS_PRODUCTION:
+        # 生产环境：只创建一篇 Markdown 教程文章
+        if post_count == 0:
+            await Post.create(
+                title="Markdown 语法完全指南",
+                content="""# Markdown 语法完全指南
+
+这是一篇展示所有 Markdown 语法样式的示例文章，涵盖了常用的 Markdown 格式。
+
+---
+
+## 1. 标题
+
+# 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+
+---
+
+## 2. 文本样式
+
+**粗体文字** 和 *斜体文字* 以及 ***粗斜体文字***
+
+~~删除线文字~~ 和 ==高亮文字==
+
+这是 `行内代码` 示例
+
+---
+
+## 3. 引用
+
+> 这是一段引用文字
+> 可以有多行
+>
+> > 这是嵌套引用
+
+---
+
+## 4. 列表
+
+### 无序列表
+
+- 苹果
+- 香蕉
+- 橙子
+  - 脐橙
+  - 血橙
+
+### 有序列表
+
+1. 第一步
+2. 第二步
+3. 第三步
+
+### 任务列表
+
+- [x] 已完成任务
+- [ ] 未完成任务
+- [ ] 待办事项
+
+---
+
+## 5. 代码块
+
+### Python
+
+```python
+def hello_world():
+    \"\"\"打印 Hello World\"\"\"
+    name = "世界"
+    print(f"你好, {name}!")
+    return True
+
+# 调用函数
+hello_world()
+```
+
+### JavaScript
+
+```javascript
+// 异步函数示例
+async function fetchData(url) {
+    try {
+        const response = await fetch(url)
+        const data = await response.json()
+        return data
+    } catch (error) {
+        console.error('请求失败:', error)
+        return null
+    }
+}
+```
+
+### CSS
+
+```css
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+```
+
+### HTML
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>示例页面</title>
+</head>
+<body>
+    <div class="container">
+        <h1>你好，世界！</h1>
+    </div>
+</body>
+</html>
+```
+
+---
+
+## 6. 表格
+
+| 功能 | 语法 | 示例 |
+|------|------|------|
+| 粗体 | `**文字**` | **粗体** |
+| 斜体 | `*文字*` | *斜体* |
+| 链接 | `[文字](url)` | [点击这里](https://example.com) |
+| 图片 | `![alt](url)` | ![示例图片](https://picsum.photos/id/1/600/400) |
+
+### 对齐表格
+
+| 左对齐 | 居中对齐 | 右对齐 |
+|:-------|:--------:|-------:|
+| 左 | 中 | 右 |
+| 内容 | 内容 | 内容 |
+
+---
+
+## 7. 链接
+
+[普通链接](https://example.com)
+
+[带标题的链接](https://example.com "鼠标悬停提示")
+
+**自动链接:** <https://example.com>
+
+---
+
+## 8. 图片
+
+![风景图片](httpsAccess to fetch at 'http://mini.honkerc.cn:8000/api/auth/verify' from origin 'http://mini.honkerc.cn' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.了解此错误
+:8000/api/auth/verify:1  Failed to load resource: net::ERR_FAILED://picsum.photos/id/101/600/400 "美丽的风景")
+
+![随机图片](https://picsum.photos/id/102/600/400)
+
+---
+
+## 9. 分割线
+
+---
+
+***
+
+___
+
+---
+
+## 10. 脚注
+
+这是一段带有脚注的文字[^1]，这是另一个脚注[^2]。
+
+[^1]: 这是脚注的内容
+[^2]: 另一个脚注的详细说明
+
+---
+
+## 11. 数学公式（LaTeX）
+
+行内公式：$E = mc^2$
+
+独立公式：
+
+$$
+\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}
+$$
+
+---
+
+## 12. 表情符号
+
+:smile: :heart: :rocket: :fire: :star:
+
+:100: :ok_hand: :muscle: :clap:
+
+---
+
+## 13. 定义列表
+
+Markdown
+: 一种轻量级标记语言，由 John Gruber 创建
+
+HTML
+: 超文本标记语言，网页的基础
+
+CSS
+: 层叠样式表，用于控制网页样式
+
+---
+
+## 14. 上标和下标
+
+上标：X^2^ 或 X²
+
+下标：H~2~O 或 H₂O
+
+---
+
+## 15. 折叠详情
+
+<details>
+<summary>点击展开查看更多</summary>
+
+这里是折叠的内容，可以包含 **Markdown** 格式。
+
+- 列表项 1
+- 列表项 2
+- 列表项 3
+
+</details>
+
+---
+
+## 16. 警告块
+
+> **注意：** 这是一个重要的提示信息。
+>
+> 请仔细阅读相关文档。
+
+> **警告：** 请谨慎操作！
+>
+> 此操作不可撤销。
+
+---
+
+## 17. 混合排版示例
+
+### 文章卡片
+
+> **文章标题** — *2024年1月*
+>
+> 这是一篇示例文章的摘要内容。
+>
+> `阅读更多 →`
+
+### 代码 + 说明
+
+```python
+# 斐波那契数列
+def fib(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+```
+
+> 上面的代码使用生成器实现了斐波那契数列，内存效率更高。
+
+---
+
+## 总结
+
+本文展示了 Markdown 的常用语法，包括：
+
+1. ✅ 标题和文本样式
+2. ✅ 引用和列表
+3. ✅ 代码块（多语言）
+4. ✅ 表格和链接
+5. ✅ 图片和分割线
+6. ✅ 脚注和数学公式
+7. ✅ 表情符号和特殊格式
+
+> Markdown 让写作更专注于内容本身。""",
+                summary="一篇展示所有 Markdown 语法样式的完整指南，包括标题、文本样式、代码块、表格、链接、图片、数学公式等 17 种常用格式。",
+                cover_url="https://picsum.photos/id/1/600/400",
+                category="技术",
+                tag="Markdown",
+                is_published=True,
+                is_top=True,
+                view_count=0,
+                like_count=0,
+                created_at=datetime.now(),
+                published_at=datetime.now(),
+            )
+            logger.info("已创建 Markdown 语法教程文章")
+        return
+
+    # ============================================
+    # 开发环境：填充完整的测试数据
+    # ============================================
+
     moment_count = await Moment.all().count()
     book_count = await Book.all().count()
     motto_count = await Motto.all().count()
@@ -705,22 +1028,6 @@ def fib(n):
                 "view_count": 156,
                 "like_count": 78,
                 "created_at": datetime.now() - timedelta(days=19),
-                "published_at": datetime.now() - timedelta(days=19),
-            },
-            {
-                "title": "《原子习惯》实践：我的100天习惯养成",
-                "content": "## 我的习惯清单\n\n### 已养成的习惯 ✅\n\n1. **每天阅读30分钟** —— 坚持了80天\n2. **每天写日记** —— 坚持了65天\n3. **每天运动20分钟** —— 坚持了42天\n\n### 习惯叠加策略\n\n> 在[喝咖啡]之后，我将[阅读10分钟]。\n> 在[阅读之后]，我将[写一段笔记]。\n\n### 环境设计\n\n- 把书放在床头而不是手机\n- 把运动鞋放在门口\n- 把日记本放在书桌中央\n\n## 总结\n\n习惯不是靠意志力，而是靠系统和环境。",
-                "summary": "100天习惯养成实践：每天阅读30分钟、写日记、运动20分钟。习惯不是靠意志力，而是靠系统和环境。",
-                "cover_url": "",
-                "category": "读书",
-                "tag": "原子习惯",
-                "is_published": True,
-                "is_top": False,
-                "is_book": False,
-                "view_count": 134,
-                "like_count": 92,
-                "created_at": datetime.now() - timedelta(days=18),
-                "published_at": datetime.now() - timedelta(days=18),
             },
             {
                 "title": "《心流》读书笔记：最优体验的心理学",

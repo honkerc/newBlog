@@ -22,7 +22,7 @@ sudo apt install -y nodejs
 cd /opt
 sudo git clone https://github.com/你的用户名/blog.git
 sudo chown -R $USER:$USER blog
-cd blog
+cd blog     
 ```
 
 ## 3. 配置后端
@@ -34,7 +34,7 @@ source venv/bin/activate
 
 # 安装依赖
 pip install -r back/requirements.txt
-pip install uvicorn
+pip install uvicorn     
 
 # 配置环境变量
 cp back/.env back/.env.production
@@ -87,6 +87,9 @@ server {
     listen 80;
     server_name honkerc.cn;
 
+    # 客户端上传大小限制（10MB）
+    client_max_body_size 10M;
+
     # 前端静态文件
     root /opt/blog/front/dist;
     index index.html;
@@ -117,6 +120,9 @@ server {
 server {
     listen 80;
     server_name mini.honkerc.cn;
+
+    # 客户端上传大小限制（10MB）
+    client_max_body_size 10M;
 
     root /opt/blog/mini/dist;
     index index.html;
@@ -168,7 +174,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-WorkingDirectory=/opt/blog
+WorkingDirectory=/opt/blog/back
 EnvironmentFile=/opt/blog/back/.env.production
 ExecStart=/opt/blog/venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
 Restart=always
