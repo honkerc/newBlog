@@ -1,11 +1,11 @@
 # ============================================
 # 博客前端 (mini) - Docker 构建镜像
 # ============================================
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY mini/package.json mini/package-lock.json ./
-RUN npm ci
+RUN npm install --ignore-engines
 
 COPY mini/ .
 RUN npm run build

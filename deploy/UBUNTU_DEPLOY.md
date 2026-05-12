@@ -119,7 +119,24 @@ cd blog/deploy
 # 配置环境变量
 cp .env.example .env
 nano .env
+```
 
+`.env` 文件中的 `SECRET_KEY` 用于 JWT 令牌加密，**务必修改为随机字符串**。可以用以下命令生成：
+
+```bash
+# 方法1：使用 openssl（推荐）
+openssl rand -hex 32
+
+# 方法2：使用 Python
+python3 -c "import secrets; print(secrets.token_hex(32))"
+
+# 方法3：使用 uuid
+python3 -c "import uuid; print(uuid.uuid4().hex + uuid.uuid4().hex)"
+```
+
+将生成的字符串填入 `.env` 的 `SECRET_KEY` 字段。
+
+```bash
 # 启动服务
 docker compose up -d --build
 
