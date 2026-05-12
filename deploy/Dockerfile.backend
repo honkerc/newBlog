@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY back/ .
 
 # 创建必要目录
-RUN mkdir -p uploads files logs
+RUN mkdir -p uploads files logs data
 
 # 暴露端口
 EXPOSE 8000

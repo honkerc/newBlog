@@ -108,10 +108,10 @@ sudo apt install -y certbot python3-certbot-nginx
 sudo certbot --nginx -d honkerc.cn -d mini.honkerc.cn
 ```
 
-## 5. 部署
+## 5. 首次部署
 
 ```bash
-# 上传项目到服务器
+# 克隆项目
 cd /opt
 git clone https://github.com/你的用户名/blog.git
 cd blog/deploy
@@ -132,7 +132,20 @@ openssl rand -hex 32
 ./deploy.sh
 ```
 
-## 6. 构建 Android APK
+## 6. 更新代码
+
+以后代码有修改，不需要删除重新下载，只需：
+
+```bash
+cd /opt/blog
+git pull                    # 拉取最新代码
+cd deploy
+docker compose up -d --build  # 重新构建并启动
+```
+
+> `git pull` 会自动拉取 GitHub 上的最新改动，`--build` 会重新构建有变化的镜像，数据库和上传文件等数据不会丢失。
+
+## 7. 构建 Android APK
 
 ```bash
 cd mini
@@ -144,7 +157,7 @@ npm run android:open  # 用 Android Studio 打开
 
 > Android 原生应用的 API 地址在 `mini/src/utils/api.js` 中配置，当前为 `http://honkerc.cn`。
 
-## 7. 常用命令
+## 8. 常用命令
 
 ```bash
 docker compose logs -f          # 查看日志
