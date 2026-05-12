@@ -3,10 +3,6 @@
  * - Capacitor (Android 原生): 使用配置的服务器地址
  * - 开发环境 (localhost:3001): 使用 localhost:8000
  * - 生产环境 (Nginx 反向代理): 使用同源地址（空字符串）
- *
- * 通过 hostname 判断：
- *   localhost/127.0.0.1 → 开发环境，需要加端口
- *   其他（域名或 IP）  → 生产环境（Nginx 已代理 /api/ 到后端）
  */
 
 // 在 Capacitor 原生环境中，使用配置的服务器地址
@@ -19,8 +15,12 @@ if (isCapacitor) {
 } else {
     const hostname = window.location.hostname
     const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1'
+    // 开发环境使用 localhost:8000，生产环境使用同源（空字符串）
     API_BASE = isLocalhost ? `http://${hostname}:8000` : ''
 }
+
+// 调试：打印当前 API 地址
+console.log('[API] hostname:', window.location.hostname, 'API_BASE:', API_BASE)
 
 function getToken() {
     return localStorage.getItem('mini_token')
