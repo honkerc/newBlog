@@ -40,7 +40,7 @@ server {
     server_name honkerc.cn;
 
     location /api/ {
-        proxy_pass http://127.0.0.1:8000;
+        proxy_pass http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -48,7 +48,7 @@ server {
     }
 
     location /uploads/ {
-        proxy_pass http://127.0.0.1:8000;
+        proxy_pass http://127.0.0.1:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         expires 30d;
@@ -70,7 +70,7 @@ server {
     server_name mini.honkerc.cn;
 
     location /api/ {
-        proxy_pass http://127.0.0.1:8000;
+        proxy_pass http://127.0.0.1:3001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -78,7 +78,7 @@ server {
     }
 
     location /uploads/ {
-        proxy_pass http://127.0.0.1:8000;
+        proxy_pass http://127.0.0.1:3001;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         expires 30d;
@@ -121,36 +121,15 @@ cp .env.example .env
 nano .env
 ```
 
-`.env` 文件中的 `SECRET_KEY` 用于 JWT 令牌加密，**务必修改为随机字符串**。可以用以下命令生成：
+`.env` 文件中的 `SECRET_KEY` 用于 JWT 令牌加密，**务必修改为随机字符串**：
 
 ```bash
-# 方法1：使用 openssl（推荐）
 openssl rand -hex 32
-
-# 方法2：使用 Python
-python3 -c "import secrets; print(secrets.token_hex(32))"
-
-# 方法3：使用 uuid
-python3 -c "import uuid; print(uuid.uuid4().hex + uuid.uuid4().hex)"
 ```
-
-将生成的字符串填入 `.env` 的 `SECRET_KEY` 字段。
 
 ```bash
 # 启动服务
-docker compose up -d --build
-
-# 初始化数据
-docker exec -it blog-backend python -c "
-from app.database import SessionLocal, engine
-from app.models import Base
-from app.api.seed import seed_data
-Base.metadata.create_all(bind=engine)
-db = SessionLocal()
-seed_data(db)
-db.close()
-print('种子数据初始化完成！')
-"
+./deploy.sh
 ```
 
 ## 6. 构建 Android APK

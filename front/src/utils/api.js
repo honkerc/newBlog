@@ -8,14 +8,15 @@
 /**
  * API 基础地址
  * - 生产环境（Nginx 反向代理）：使用同源地址（空字符串）
- * - 开发环境：使用 localhost:8000
+ * - 开发环境（localhost:8080/3001）：使用 localhost:8000
  *
- * 通过 window.location.port 判断：
- *   8080/3001 → 开发环境，需要加端口
- *   其他       → 生产环境（Nginx 已代理 /api/ 到后端）
+ * 通过 hostname 判断：
+ *   localhost/127.0.0.1 → 开发环境，需要加端口
+ *   其他（域名或 IP）  → 生产环境（Nginx 已代理 /api/ 到后端）
  */
-const isDev = window.location.port === '8080' || window.location.port === '3001'
-const API_BASE = isDev ? `http://${window.location.hostname}:8000` : ''
+const hostname = window.location.hostname
+const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1'
+const API_BASE = isLocalhost ? `http://${hostname}:8000` : ''
 
 /**
  * 解析图片 URL

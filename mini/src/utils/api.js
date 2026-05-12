@@ -4,9 +4,9 @@
  * - 开发环境 (localhost:3001): 使用 localhost:8000
  * - 生产环境 (Nginx 反向代理): 使用同源地址（空字符串）
  *
- * 通过 window.location.port 判断：
- *   8080/3001 → 开发环境，需要加端口
- *   其他       → 生产环境（Nginx 已代理 /api/ 到后端）
+ * 通过 hostname 判断：
+ *   localhost/127.0.0.1 → 开发环境，需要加端口
+ *   其他（域名或 IP）  → 生产环境（Nginx 已代理 /api/ 到后端）
  */
 
 // 在 Capacitor 原生环境中，使用配置的服务器地址
@@ -17,8 +17,9 @@ if (isCapacitor) {
     // Android 原生应用 → 连接到服务器
     API_BASE = 'http://honkerc.cn'
 } else {
-    const isDev = window.location.port === '8080' || window.location.port === '3001'
-    API_BASE = isDev ? `http://${window.location.hostname}:8000` : ''
+    const hostname = window.location.hostname
+    const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1'
+    API_BASE = isLocalhost ? `http://${hostname}:8000` : ''
 }
 
 function getToken() {

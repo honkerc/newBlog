@@ -24,6 +24,12 @@ import os
 
 
 # ============================================
+# 环境判断
+# ============================================
+IS_PRODUCTION = os.getenv("ENV", "development") == "production"
+
+
+# ============================================
 # 应用生命周期管理
 # ============================================
 @asynccontextmanager
@@ -36,8 +42,10 @@ async def lifespan(app: FastAPI):
     await create_default_admin()
     await seed_data()
     logger.info("数据库初始化完成")
-    logger.info(f"API 文档: http://localhost:8000/docs")
-    logger.info(f"默认管理员: {settings.ADMIN_USERNAME} / {settings.ADMIN_PASSWORD}")
+    
+    if not IS_PRODUCTION:
+        logger.info(f"API 文档: http://localhost:8000/docs")
+        logger.info(f"默认管理员: {settings.ADMIN_USERNAME} / {settings.ADMIN_PASSWORD}")
     
     yield  # 应用运行中
     
@@ -53,8 +61,9 @@ app = FastAPI(
     title="魂牵梦绕 - 博客 API",
     description="个人博客系统后端 API 接口",
     version="1.0.0",
-    docs_url="/docs",
-    redoc_url="/redoc",
+    # 生产环境关闭 API 文档
+    docs_url=None if IS_PRODUCTION else "/docs",
+    redoc_url=None if IS_PRODUCTION else "/redoc",
     lifespan=lifespan,
 )
 

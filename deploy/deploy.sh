@@ -20,8 +20,8 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null; then
-    echo "[错误] 未安装 docker-compose，请先安装 docker-compose"
+if ! docker compose version &> /dev/null; then
+    echo "[错误] 未安装 Docker Compose，请先安装 Docker Compose"
     exit 1
 fi
 
@@ -40,16 +40,16 @@ source .env 2>/dev/null || true
 set +a
 
 echo "[1/3] 构建 Docker 镜像..."
-docker-compose build
+docker compose build
 
 echo ""
 echo "[2/3] 启动服务..."
-docker-compose up -d
+docker compose up -d
 
 echo ""
 echo "[3/3] 检查服务状态..."
 sleep 3
-docker-compose ps
+docker compose ps
 
 echo ""
 echo "============================================"
@@ -63,8 +63,8 @@ echo "  API 后端:      http://localhost:8000"
 echo "  API 文档:      http://localhost:8000/docs"
 echo ""
 echo "  管理命令:"
-echo "  查看日志:  docker-compose logs -f"
-echo "  重启服务:  docker-compose restart"
-echo "  停止服务:  docker-compose down"
+echo "  查看日志:  docker compose logs -f"
+echo "  重启服务:  docker compose restart"
+echo "  停止服务:  docker compose down"
 echo ""
 echo "============================================"
