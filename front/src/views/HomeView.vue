@@ -138,7 +138,8 @@
         <span>暂无动态</span>
       </div>
 
-      <!-- ===== 最近读书 ===== -->
+      <!-- ===== 最近读书（已隐藏） ===== -->
+      <!--
       <div class="section-header">
         <h3 class="section-title"><i class="fas fa-book"></i> 最近读书</h3>
         <router-link to="/reading" class="section-more">
@@ -164,8 +165,10 @@
         <i class="fas fa-book"></i>
         <span>暂无读书</span>
       </div>
+      -->
 
-      <!-- ===== 关于我 - 更多信息 ===== -->
+      <!-- ===== 关于我 - 更多信息（已隐藏） ===== -->
+      <!--
       <div class="about-more-section">
         <div class="about-grid">
           <div class="about-card">
@@ -202,6 +205,7 @@
           </div>
         </div>
       </div>
+      -->
     </template>
   </div>
 </template>

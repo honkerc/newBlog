@@ -24,7 +24,7 @@
             <i class="fas fa-quote-right"></i>
             <span>一言</span>
         </router-link>
-        <router-link to="/login" class="nav-link login-link" v-if="!isLoggedIn">
+        <router-link :to="isLoggedIn ? '/admin' : '/login'" class="nav-link login-link">
             <i class="fas fa-lock"></i>
             <span>管理</span>
         </router-link>
