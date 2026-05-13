@@ -112,11 +112,11 @@ async def upload_file(
     with open(file_path, "wb") as f:
         f.write(contents)
 
-    url = f"{settings.BASE_URL}/uploads/{filename}"
+    url = f"/uploads/{filename}"
 
     # 生成缩略图
     thumb_name = _create_thumbnail(settings.UPLOAD_DIR, filename)
-    thumb_url = f"{settings.BASE_URL}/uploads/{thumb_name}" if thumb_name else url
+    thumb_url = f"/uploads/{thumb_name}" if thumb_name else url
 
     return {
         "filename": filename,

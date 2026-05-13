@@ -144,12 +144,7 @@ server {
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         expires 30d;
-        add_header Cache-Control "public, immutable";
-    }
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
+        add_header Cache-Control
 }
 ```
 
