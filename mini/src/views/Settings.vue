@@ -60,7 +60,7 @@ const testResult = ref(null)
 const currentUrl = ref('')
 
 const STORAGE_KEY = 'mini_server_url'
-const DEFAULT_URL = 'https://honkerc.cn'
+const DEFAULT_URL = ''
 
 onMounted(() => {
     currentUrl.value = localStorage.getItem(STORAGE_KEY) || DEFAULT_URL

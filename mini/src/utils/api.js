@@ -1,11 +1,11 @@
 /**
  * API 基础地址
  * 从 localStorage 读取用户配置的服务器地址
- * 默认值: http://127.0.0.1:8000
+ * 默认值: 空字符串（同源请求，走 nginx 代理）
  */
 
 const STORAGE_KEY = 'mini_server_url'
-const DEFAULT_URL = 'https://honkerc.cn'
+const DEFAULT_URL = ''
 
 function getToken() {
     return localStorage.getItem('mini_token')
