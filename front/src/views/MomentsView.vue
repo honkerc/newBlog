@@ -65,7 +65,8 @@
                         <div class="card-images" v-if="item.imagesList && item.imagesList.length">
                             <div class="card-img-item" v-for="(img, j) in item.imagesList" :key="j"
                                 @click="previewIndex = getGlobalImageIndex(i, j)">
-                                <img :src="resolveThumbUrl(img)" alt="" />
+                                <img :src="resolveThumbUrl(img)" alt=""
+                                    @error="$event.target.src = resolveImageUrl(img)" />
                             </div>
                         </div>
 
