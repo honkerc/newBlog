@@ -49,3 +49,5 @@ jobs:
         with:
           name: mini-app-debug
           path: mini/android/app/build/outputs/apk/debug/app-debug.apk
+
+
