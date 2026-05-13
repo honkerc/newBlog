@@ -7,6 +7,7 @@ import Motto from './views/Motto.vue'
 import Daily from './views/Daily.vue'
 import Reading from './views/Reading.vue'
 import Today from './views/Today.vue'
+import Settings from './views/Settings.vue'
 
 const routes = [
     { path: '/', component: CheckIn, meta: { title: '打卡', icon: 'fa-check-circle', auth: true } },
@@ -15,6 +16,7 @@ const routes = [
     { path: '/reading', component: Reading, meta: { title: '读书', icon: 'fa-book-open', auth: true } },
     { path: '/today', component: Today, meta: { title: '今日', icon: 'fa-calendar-day', auth: true } },
     { path: '/login', component: Login },
+    { path: '/settings', component: Settings },
 ]
 
 const router = createRouter({
@@ -25,7 +27,9 @@ const router = createRouter({
 // 验证 token 是否有效
 async function verifyToken(token) {
     try {
-        const API_BASE = `http://${window.location.hostname}:8000`
+        const STORAGE_KEY = 'mini_server_url'
+        const DEFAULT_URL = 'http://127.0.0.1:8000'
+        const API_BASE = localStorage.getItem(STORAGE_KEY) || DEFAULT_URL
         const res = await fetch(`${API_BASE}/api/auth/verify`, {
             headers: { 'Authorization': `Bearer ${token}` },
         })

@@ -27,6 +27,7 @@ const tabs = [
     { path: '/today', label: '今日', icon: 'fas fa-calendar-day' },
     { path: '/daily', label: '精进', icon: 'fas fa-chart-line' },
     { path: '/reading', label: '读书', icon: 'fas fa-book-open' },
+    { path: '/settings', label: '设置', icon: 'fas fa-cog' },
 ]
 
 const showNav = computed(() => {

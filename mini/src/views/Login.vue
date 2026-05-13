@@ -26,6 +26,11 @@
                 <i class="fas fa-sign-in-alt"></i>
                 {{ loading ? '登录中...' : '登录' }}
             </button>
+
+            <button class="btn-settings" @click="goSettings">
+                <i class="fas fa-cog"></i>
+                服务器设置
+            </button>
         </div>
     </div>
 </template>
@@ -59,6 +64,10 @@ async function handleLogin() {
     } finally {
         loading.value = false
     }
+}
+
+function goSettings() {
+    router.push('/settings')
 }
 </script>
 
@@ -130,5 +139,29 @@ async function handleLogin() {
     background: rgba(255, 107, 107, 0.08);
     border-radius: 8px;
     margin-bottom: 16px;
+}
+
+.btn-settings {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-tertiary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-settings:active {
+    background: var(--bg-surface);
+    color: var(--text-secondary);
 }
 </style>

@@ -1,26 +1,18 @@
 /**
  * API 基础地址
- * - Capacitor (Android 原生): 使用配置的服务器地址
- * - 开发环境 (localhost:3001): 使用 localhost:8000
- * - 生产环境 (Nginx 反向代理): 使用同源地址（空字符串）
+ * 从 localStorage 读取用户配置的服务器地址
+ * 默认值: http://127.0.0.1:8000
  */
 
-// 在 Capacitor 原生环境中，使用配置的服务器地址
-const isCapacitor = typeof window !== 'undefined' && window.Capacitor !== undefined
-let API_BASE = ''
+const STORAGE_KEY = 'mini_server_url'
+const DEFAULT_URL = 'http://127.0.0.1:8000'
 
-if (isCapacitor) {
-    // Android 原生应用 → 连接到服务器
-    API_BASE = 'http://honkerc.cn'
-} else {
-    const hostname = window.location.hostname
-    const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1'
-    // 开发环境使用 localhost:8000，生产环境使用同源（空字符串）
-    API_BASE = isLocalhost ? `http://${hostname}:8000` : ''
+function getApiBase() {
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_URL
 }
 
 // 调试：打印当前 API 地址
-console.log('[API] hostname:', window.location.hostname, 'API_BASE:', API_BASE)
+console.log('[API] API_BASE:', getApiBase())
 
 function getToken() {
     return localStorage.getItem('mini_token')
@@ -36,6 +28,7 @@ async function request(url, options = {}) {
         headers['Authorization'] = `Bearer ${token}`
     }
 
+    const API_BASE = getApiBase()
     const res = await fetch(`${API_BASE}${url}`, {
         ...options,
         headers,
@@ -234,6 +227,7 @@ export const api = {
         const formData = new FormData()
         formData.append('file', file)
 
+        const API_BASE = getApiBase()
         return fetch(`${API_BASE}/api/upload`, {
             method: 'POST',
             headers: token ? { 'Authorization': `Bearer ${token}` } : {},
@@ -264,6 +258,9 @@ export const api = {
 export function resolveImageUrl(url) {
     if (!url) return ''
     if (url.startsWith('http://') || url.startsWith('https://')) return url
-    if (url.startsWith('/')) return `${API_BASE}${url}`
+    if (url.startsWith('/')) {
+        const API_BASE = getApiBase()
+        return `${API_BASE}${url}`
+    }
     return url
 }
