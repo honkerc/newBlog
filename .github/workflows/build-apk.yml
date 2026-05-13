@@ -30,9 +30,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: mini
-        run: |
-          cd ..
-          npm install
+        run: npm install
 
       - name: Build Vue app
         working-directory: mini
