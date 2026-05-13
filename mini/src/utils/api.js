@@ -7,13 +7,6 @@
 const STORAGE_KEY = 'mini_server_url'
 const DEFAULT_URL = 'http://127.0.0.1:8000'
 
-function getApiBase() {
-    return localStorage.getItem(STORAGE_KEY) || DEFAULT_URL
-}
-
-// 调试：打印当前 API 地址
-console.log('[API] API_BASE:', getApiBase())
-
 function getToken() {
     return localStorage.getItem('mini_token')
 }
@@ -253,6 +246,10 @@ export const api = {
     healthCheck() {
         return request('/api/health')
     },
+}
+
+export function getApiBase() {
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_URL
 }
 
 export function resolveImageUrl(url) {

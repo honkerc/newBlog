@@ -63,7 +63,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { api, resolveImageUrl } from '@/utils/api'
+import { api, resolveImageUrl, getApiBase } from '@/utils/api'
 
 const now = new Date()
 const dayNum = now.getDate()
@@ -109,7 +109,7 @@ async function submit() {
         await api.createCheckIn({
             category: selectedCategory.value,
             content: content.value.trim(),
-            images: images.value.map(u => u.replace('http://localhost:8000', '')).join(','),
+            images: images.value.map(u => u.replace(getApiBase(), '')).join(','),
             is_published: true,
         })
         toastMsg.value = '打卡成功 🎉'
