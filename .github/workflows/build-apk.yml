@@ -43,8 +43,10 @@ jobs:
         run: npx cap sync
 
       - name: Build APK
-        working-directory: mini/android
-        run: chmod +x gradlew && ./gradlew assembleDebug
+        run: |
+          chmod +x ${{ github.workspace }}/mini/android/gradlew
+          cd ${{ github.workspace }}/mini/android
+          ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
