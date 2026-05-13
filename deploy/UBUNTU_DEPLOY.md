@@ -94,17 +94,8 @@ server {
     root /opt/blog/front/dist;
     index index.html;
 
-    # API 反向代理到后端（含 CORS 预检处理）
+    # API 反向代理到后端（CORS 由后端 FastAPI 处理）
     location /api/ {
-        # CORS 预检请求处理
-        if ($request_method = OPTIONS) {
-            add_header Access-Control-Allow-Origin "*";
-            add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PATCH, OPTIONS";
-            add_header Access-Control-Allow-Headers "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization";
-            add_header Access-Control-Max-Age 86400;
-            return 204;
-        }
-
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -136,17 +127,8 @@ server {
     root /opt/blog/mini/dist;
     index index.html;
 
-    # API 反向代理到后端（含 CORS 预检处理）
+    # API 反向代理到后端（CORS 由后端 FastAPI 处理）
     location /api/ {
-        # CORS 预检请求处理
-        if ($request_method = OPTIONS) {
-            add_header Access-Control-Allow-Origin "*";
-            add_header Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PATCH, OPTIONS";
-            add_header Access-Control-Allow-Headers "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization";
-            add_header Access-Control-Max-Age 86400;
-            return 204;
-        }
-
         proxy_pass http://127.0.0.1:8000;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
