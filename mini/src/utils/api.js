@@ -5,7 +5,7 @@
  */
 
 const STORAGE_KEY = 'mini_server_url'
-const DEFAULT_URL = 'http://127.0.0.1:8000'
+const DEFAULT_URL = 'https://honkerc.cn'
 
 function getToken() {
     return localStorage.getItem('mini_token')

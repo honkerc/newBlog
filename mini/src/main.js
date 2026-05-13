@@ -28,7 +28,7 @@ const router = createRouter({
 async function verifyToken(token) {
     try {
         const STORAGE_KEY = 'mini_server_url'
-        const DEFAULT_URL = 'http://127.0.0.1:8000'
+        const DEFAULT_URL = 'https://honkerc.cn'
         const API_BASE = localStorage.getItem(STORAGE_KEY) || DEFAULT_URL
         const res = await fetch(`${API_BASE}/api/auth/verify`, {
             headers: { 'Authorization': `Bearer ${token}` },
