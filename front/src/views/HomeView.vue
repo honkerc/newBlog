@@ -233,13 +233,12 @@ const timeline = [
 const typewriterLines = [
   '欢迎来到我的世界',
   '不管你见到的是如何的我',
-  '或开朗 或小气 或情绪化 ',
+  '或开朗 或小气 或情绪化',
   '或阴险 或克制 或自律 或向上',
   '或是一滩扶不上墙的烂泥',
-  '你看到的都是真实的我',
-  '如果你看见这样的我',
-  '还愿意继续认识我',
-  '我很感恩你的到来',
+  '你看到的，都是真实的我',
+  '我很期待你的到来',
+  '也不遗憾你的离开'
 ]
 const typewriterCurrentLine = ref(0)
 const typewriterDone = ref(false)
