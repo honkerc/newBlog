@@ -105,6 +105,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 0 16px 80px;
+    padding-top: env(safe-area-inset-top, 0px);
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
