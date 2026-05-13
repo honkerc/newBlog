@@ -36,9 +36,9 @@ jobs:
         working-directory: mini
         run: npm run build
 
-      - name: Copy web assets to Android
+      - name: Sync Capacitor Android
         working-directory: mini
-        run: npx cap copy android
+        run: npx cap sync android
 
       - name: Build APK
         working-directory: mini/android
