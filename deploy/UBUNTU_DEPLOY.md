@@ -103,9 +103,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
-    # 上传文件
+    # 上传文件（反向代理到后端，由后端处理文件服务）
     location /uploads/ {
-        alias /opt/blog/back/uploads/;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
         expires 30d;
         add_header Cache-Control "public, immutable";
     }
@@ -136,8 +138,11 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 
+    # 上传文件（反向代理到后端，由后端处理文件服务）
     location /uploads/ {
-        alias /opt/blog/back/uploads/;
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
         expires 30d;
         add_header Cache-Control "public, immutable";
     }
