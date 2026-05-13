@@ -3,10 +3,11 @@
     "appName": "Mini",
     "webDir": "dist",
     "server": {
-        "androidScheme": "https",
+        "androidScheme": "http",
         "allowNavigation": [
             "honkerc.cn",
-            "mini.honkerc.cn"
+            "mini.honkerc.cn",
+            "127.0.0.1"
         ]
     }
 }
