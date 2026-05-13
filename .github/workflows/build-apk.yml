@@ -5,14 +5,11 @@ on:
     branches: [ main ]
     paths:
       - 'mini/**'
-  workflow_dispatch:  # 手动触发
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: mini
 
     steps:
       - uses: actions/checkout@v4
@@ -32,20 +29,22 @@ jobs:
         uses: android-actions/setup-android@v3
 
       - name: Install dependencies
+        working-directory: mini
         run: |
           cd ..
           npm install
 
       - name: Build Vue app
+        working-directory: mini
         run: npm run build
 
       - name: Sync Capacitor
+        working-directory: mini
         run: npx cap sync
 
       - name: Build APK
-        run: |
-          chmod +x android/gradlew
-          cd android && ./gradlew assembleDebug
+        working-directory: mini/android
+        run: chmod +x gradlew && ./gradlew assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
