@@ -29,12 +29,9 @@ async def seed_data():
     post_count = await Post.all().count()
 
     if IS_PRODUCTION:
-        # 生产环境：清空所有数据，只保留一篇 Markdown 教程文章
-        # 先删除所有现有数据
-        await Post.all().delete()
-        await Moment.all().delete()
-        await Book.all().delete()
-        await Motto.all().delete()
+        # 生产环境：如果数据库为空，创建一篇 Markdown 教程文章
+        if post_count > 0:
+            return
 
         await Post.create(
             title="Markdown 语法完全指南",
