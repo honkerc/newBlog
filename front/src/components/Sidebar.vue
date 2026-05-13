@@ -29,7 +29,7 @@
             </router-link>
             <router-link to="/daily" class="nav-item" :class="{ active: $route.path === '/daily' }">
                 <i class="fas fa-chart-line"></i>
-                <span>日精进</span>
+                <span>精进</span>
             </router-link>
             <router-link to="/moments" class="nav-item" :class="{ active: $route.path === '/moments' }">
                 <i class="fas fa-camera"></i>
@@ -37,7 +37,7 @@
             </router-link>
             <router-link to="/mottos" class="nav-item" :class="{ active: $route.path === '/mottos' }">
                 <i class="fas fa-quote-right"></i>
-                <span>一句话</span>
+                <span>一言</span>
             </router-link>
         </nav>
 

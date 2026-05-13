@@ -102,7 +102,7 @@ async function submit() {
 
 <style scoped>
 .page {
-    padding-top: 8px;
+    padding-top: 4px;
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 80px - var(--nav-height));

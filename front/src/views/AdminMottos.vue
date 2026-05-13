@@ -2,7 +2,7 @@
     <div class="admin-mottos">
         <div class="page-header">
             <div class="header-left">
-                <h2>一句话管理</h2>
+                <h2>一言管理</h2>
                 <span class="header-count">{{ mottos.length }} 条</span>
             </div>
             <button class="create-btn" @click="openNew">

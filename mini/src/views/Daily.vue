@@ -3,7 +3,7 @@
         <div class="page-header">
             <div class="header-top">
                 <div class="header-title-group">
-                    <h1>日精进</h1>
+                    <h1>精进</h1>
                     <p class="header-desc">每天进步一点点</p>
                 </div>
                 <div class="header-icon">
@@ -44,12 +44,12 @@ function getDateStr() {
 }
 
 function getTodayTitle() {
-    return `日精进${getDateStr()}`
+    return `精进${getDateStr()}`
 }
 
 onMounted(async () => {
     try {
-        const res = await api.getPosts({ category: '日精进', page_size: 50 })
+        const res = await api.getPosts({ category: '精进', page_size: 50 })
         const todayTitle = getTodayTitle()
         const existing = (res.items || []).find(p => p.title === todayTitle)
         if (existing) {
@@ -57,7 +57,7 @@ onMounted(async () => {
             content.value = existing.content || ''
         }
     } catch (e) {
-        console.error('加载今日日精进失败:', e)
+        console.error('加载今日精进失败:', e)
     }
 })
 
@@ -68,8 +68,8 @@ async function submit() {
         const data = {
             title: getTodayTitle(),
             content: content.value.trim(),
-            category: '日精进',
-            tag: '日精进',
+            category: '精进',
+            tag: '精进',
             cover_url: '',
             is_published: true,
             is_book: false,
@@ -97,7 +97,7 @@ async function submit() {
 
 <style scoped>
 .page {
-    padding-top: 8px;
+    padding-top: 4px;
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 80px - var(--nav-height));

@@ -3,7 +3,7 @@
         <!-- 左侧：时间线 -->
         <div class="daily-main">
             <div class="page-head">
-                <h1 class="head-title">日精进</h1>
+                <h1 class="head-title">精进</h1>
                 <p class="head-desc">每天进步一点点，记录成长路上的每一个脚印</p>
             </div>
 
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="empty-text" v-else>暂无日精进记录</div>
+            <div class="empty-text" v-else>暂无精进记录</div>
         </div>
 
         <!-- 右侧：热力图 -->
@@ -79,10 +79,10 @@ function goToPost(id) {
 
 onMounted(async () => {
     try {
-        const res = await publicApi.getPosts({ page: 1, page_size: 50, tag: '日精进' })
+        const res = await publicApi.getPosts({ page: 1, page_size: 50, tag: '精进' })
         articles.value = res.items || []
     } catch (e) {
-        console.error('加载日精进失败:', e)
+        console.error('加载精进失败:', e)
     } finally {
         loading.value = false
     }

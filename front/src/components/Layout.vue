@@ -148,4 +148,17 @@ function toggleAdminSidebar() {
 .content-body.has-admin-bar {
     padding-bottom: 100px;
 }
+
+/* ===== 响应式 ===== */
+@media (max-width: 900px) {
+    .content-body {
+        padding: 24px 20px 32px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-body {
+        padding: 16px 14px 32px;
+    }
+}
 </style>

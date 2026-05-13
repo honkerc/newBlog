@@ -114,8 +114,8 @@
               <span class="card-date">{{ formatDate(moment.created_at) }}</span>
             </div>
             <div class="card-content">{{ moment.content }}</div>
-            <div class="card-images" v-if="moment.images && moment.images.length">
-              <div class="card-img-item" v-for="(img, j) in moment.images.slice(0, 4)" :key="j">
+            <div class="card-images" v-if="moment.imagesList && moment.imagesList.length">
+              <div class="card-img-item" v-for="(img, j) in moment.imagesList.slice(0, 4)" :key="j">
                 <img :src="resolveThumbUrl(img)" alt="" />
               </div>
             </div>
@@ -229,7 +229,8 @@ const timeline = [
 const typewriterLines = [
   '欢迎来到我的世界',
   '不管你见到的是如何的我',
-  '或开朗 或小气 或情绪化 或阴险 或克制 或自律 或向上',
+  '或开朗 或小气 或情绪化 ',
+  '或阴险 或克制 或自律 或向上',
   '或是一滩扶不上墙的烂泥',
   '你看到的都是真实的我',
   '如果你看见这样的我',
@@ -294,7 +295,10 @@ onMounted(async () => {
       latestPosts.value = postsRes.value.items || []
     }
     if (momentsRes.status === 'fulfilled') {
-      latestMoments.value = momentsRes.value.items || []
+      latestMoments.value = (momentsRes.value.items || []).map(item => ({
+        ...item,
+        imagesList: item.images ? item.images.split(',').filter(Boolean).map(s => s.trim()) : [],
+      }))
     }
     if (booksRes.status === 'fulfilled') {
       latestBooks.value = (booksRes.value.items || []).slice(0, 4)
@@ -1044,6 +1048,13 @@ onMounted(async () => {
 }
 
 /* ===== 响应式 ===== */
+@media (max-width: 900px) {
+  .hacker-content {
+    padding: 14px 18px 18px;
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 640px) {
   .books-grid {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -1075,6 +1086,25 @@ onMounted(async () => {
 
   .about-hero-right {
     max-width: 100%;
+  }
+
+  .hacker-content {
+    padding: 12px 14px 16px;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .hacker-line {
+    gap: 6px;
+    min-height: 20px;
+  }
+
+  .hacker-prompt {
+    font-size: 12px;
+  }
+
+  .hacker-text {
+    word-break: break-word;
   }
 }
 </style>

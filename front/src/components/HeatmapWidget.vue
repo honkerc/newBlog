@@ -48,7 +48,7 @@ const props = defineProps({
 
 const rawData = ref([])
 const stats = ref({
-    days: 60,
+    days: 0,
     posts: 0,
     moments: 0,
 })
@@ -102,9 +102,9 @@ onMounted(async () => {
         rawData.value = res.items || []
         if (res.stats) {
             stats.value = {
-                days: res.stats.days || 60,
-                posts: res.stats.posts || 0,
-                moments: res.stats.moments || 0,
+                days: res.stats.days ?? 0,
+                posts: res.stats.posts ?? 0,
+                moments: res.stats.moments ?? 0,
             }
         }
     } catch (e) {

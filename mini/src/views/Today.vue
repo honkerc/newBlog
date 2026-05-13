@@ -61,7 +61,7 @@
             <div class="section-header">
                 <div class="section-label">
                     <i class="fas fa-quote-right"></i>
-                    <span>一句话</span>
+                    <span>一言</span>
                 </div>
                 <span class="section-count">{{ todayData.mottos.length }} 条</span>
             </div>
@@ -87,7 +87,7 @@
             <div class="section-header">
                 <div class="section-label">
                     <i class="fas fa-file-alt"></i>
-                    <span>日精进 / 读书笔记</span>
+                    <span>精进 / 读书</span>
                 </div>
                 <span class="section-count">{{ todayData.posts.length }} 条</span>
             </div>
@@ -200,7 +200,7 @@ async function toggleLike(item) {
 
 <style scoped>
 .page {
-    padding-top: 8px;
+    padding-top: 4px;
 }
 
 /* ===== 页头 ===== */

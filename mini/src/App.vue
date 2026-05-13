@@ -23,9 +23,9 @@ const route = useRoute()
 
 const tabs = [
     { path: '/', label: '打卡', icon: 'fas fa-check-circle' },
-    { path: '/motto', label: '一句话', icon: 'fas fa-quote-right' },
+    { path: '/motto', label: '一言', icon: 'fas fa-quote-right' },
     { path: '/today', label: '今日', icon: 'fas fa-calendar-day' },
-    { path: '/daily', label: '日精进', icon: 'fas fa-chart-line' },
+    { path: '/daily', label: '精进', icon: 'fas fa-chart-line' },
     { path: '/reading', label: '读书', icon: 'fas fa-book-open' },
 ]
 

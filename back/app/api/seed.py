@@ -29,11 +29,16 @@ async def seed_data():
     post_count = await Post.all().count()
 
     if IS_PRODUCTION:
-        # 生产环境：只创建一篇 Markdown 教程文章
-        if post_count == 0:
-            await Post.create(
-                title="Markdown 语法完全指南",
-                content="""# Markdown 语法完全指南
+        # 生产环境：清空所有数据，只保留一篇 Markdown 教程文章
+        # 先删除所有现有数据
+        await Post.all().delete()
+        await Moment.all().delete()
+        await Book.all().delete()
+        await Motto.all().delete()
+
+        await Post.create(
+            title="Markdown 语法完全指南",
+            content="""# Markdown 语法完全指南
 
 这是一篇展示所有 Markdown 语法样式的示例文章，涵盖了常用的 Markdown 格式。
 
@@ -333,7 +338,7 @@ def fib(n):
                 created_at=datetime.now(),
                 published_at=datetime.now(),
             )
-            logger.info("已创建 Markdown 语法教程文章")
+        logger.info("已创建 Markdown 语法教程文章")
         return
 
     # ============================================

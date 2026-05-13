@@ -12,17 +12,19 @@ from app.models.moment import Moment
 from app.models.comment import Comment
 from app.models.book import Book
 from app.models.motto import Motto
+from app.models.user import User
 
 router = APIRouter(prefix="/api/heatmap", tags=["热力图"])
 
 
 @router.get("")
 async def get_heatmap_data(
-    days: int = Query(60, ge=1, le=365, description="最近天数"),
+    days: int = Query(60, ge=1, le=365, description="热力图显示最近天数"),
 ):
     """
     获取热力图数据（公开）
     返回最近 N 天每天的文章、动态、评论、书籍、语录数量。
+    stats.days 显示博客从创建到现在的运行天数。
     """
     today = date.today()
     start_date = today - timedelta(days=days - 1)
@@ -60,12 +62,17 @@ async def get_heatmap_data(
     total_moments = await Moment.all().count()
     total_books = await Book.all().count()
     total_mottos = await Motto.all().count()
-    total_days = days
+    # 博客已运行天数 = 从第一个用户创建到现在的天数（至少 1 天）
+    first_user = await User.all().order_by("created_at").first()
+    if first_user and first_user.created_at:
+        blog_days = max(1, (today - first_user.created_at.date()).days)
+    else:
+        blog_days = 1
 
     return {
         "items": result,
         "stats": {
-            "days": total_days,
+            "days": blog_days,
             "posts": total_posts,
             "moments": total_moments,
             "books": total_books,

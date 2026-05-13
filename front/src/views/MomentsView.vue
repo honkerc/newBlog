@@ -245,7 +245,6 @@ onMounted(() => {
     display: flex;
     gap: 32px;
     align-items: flex-start;
-    padding: 0 16px 60px;
 }
 
 .moments-main {
@@ -694,10 +693,6 @@ onMounted(() => {
 @media (max-width: 600px) {
     .head-title {
         font-size: 26px;
-    }
-
-    .moments-layout {
-        padding: 0 12px 40px;
     }
 
     .filter-bar {

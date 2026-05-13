@@ -3,7 +3,7 @@
         <div class="page-header">
             <div class="header-top">
                 <div class="header-title-group">
-                    <h1>一句话</h1>
+                    <h1>一言</h1>
                     <p class="header-desc">记录触动你的瞬间</p>
                 </div>
                 <div class="header-icon">
@@ -21,7 +21,7 @@
 
         <!-- 输入 -->
         <div class="form-group">
-            <label>写一句话</label>
+            <label>写一言</label>
             <textarea v-model="content" class="form-textarea" placeholder="今天有什么触动你的话？"
                 style="min-height: 80px;"></textarea>
         </div>
@@ -85,7 +85,7 @@ async function submit() {
 
 <style scoped>
 .page {
-    padding-top: 8px;
+    padding-top: 4px;
 }
 
 /* ===== 页头 ===== */

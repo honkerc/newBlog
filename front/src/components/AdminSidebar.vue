@@ -23,7 +23,7 @@
         </router-link>
         <router-link to="/admin/mottos" class="nav-link" :class="{ active: $route.path === '/admin/mottos' }">
             <i class="fas fa-quote-right"></i>
-            <span>一句话</span>
+            <span>一言</span>
         </router-link>
         <router-link to="/admin/profile" class="nav-link" :class="{ active: $route.path === '/admin/profile' }">
             <i class="fas fa-user-gear"></i>
