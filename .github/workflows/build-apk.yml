@@ -42,6 +42,27 @@ jobs:
         working-directory: mini
         run: npx cap sync
 
+      - name: Ensure Android network config
+        run: |
+          # 创建 network_security_config.xml
+          mkdir -p ${{ github.workspace }}/mini/android/app/src/main/res/xml
+          cat > ${{ github.workspace }}/mini/android/app/src/main/res/xml/network_security_config.xml << 'XMLEOF'
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
+XMLEOF
+
+          # 确保 AndroidManifest.xml 有 networkSecurityConfig
+          MANIFEST=${{ github.workspace }}/mini/android/app/src/main/AndroidManifest.xml
+          if ! grep -q "networkSecurityConfig" "$MANIFEST"; then
+            sed -i 's|android:usesCleartextTraffic="true"|android:usesCleartextTraffic="true"\n        android:networkSecurityConfig="@xml/network_security_config"|' "$MANIFEST"
+          fi
+
       - name: Build APK
         run: |
           chmod +x ${{ github.workspace }}/mini/android/gradlew
