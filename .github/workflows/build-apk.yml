@@ -2,7 +2,7 @@ name: Build Mini APK
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'mini/**'
   workflow_dispatch:
